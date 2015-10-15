@@ -10,7 +10,7 @@
   
 	<groupId>org.docx4j</groupId>
 	<artifactId>docx4j</artifactId>
-	<version>3.2.2</version>
+	<version>3.2.2-ixxus-patched-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>docx4j</name>
 	<description>
@@ -642,13 +642,19 @@
 		    <artifactId>stringtemplate</artifactId>
 		    <version>3.2.1</version>
 		</dependency>
-		
-		<!--  since 3.1.1 -->
+
+		<!--  since 3.1.1
 		<dependency>
-		    <groupId>com.google.guava</groupId>
-		    <artifactId>guava</artifactId>
-		    <version>17.0</version>
-		</dependency>		
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>17.0</version>
+		</dependency>
+		-->
+		<dependency>
+			<groupId>com.google.collections</groupId>
+			<artifactId>google-collections</artifactId>
+			<version>1.0</version>
+		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
@@ -881,14 +887,18 @@
    					broken (mvn 2.0.9) even though java.home is supposed to point to JRE_HOME:
 
    				-->
-   				
-<!-- Uncomment to deploy to GitHub.  MUST Comment out for real release
-<distributionManagement>
-    <repository>
-        <id>internal.repo</id>
-        <name>Temporary Staging Repository</name>
-        <url>file://${project.build.directory}/mvn-repo</url>
-    </repository>
-</distributionManagement>   				
--->
+
+	<distributionManagement>
+		<repository>
+			<id>rli-releases</id>
+			<name>Internal Releases</name>
+			<url>http://10.192.1.207:8081/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>rli-snapshots</id>
+			<name>Internal Snapshots</name>
+			<url>http://10.192.1.207:8081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
 </project>
